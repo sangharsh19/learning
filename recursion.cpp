@@ -1,5 +1,58 @@
 #include<iostream>
+#include<cstring>
+#include<vector>
 using namespace std;
+
+bool is_palindrome_string(string str,int i = 0)
+{
+  if(i >= (str.length()-1-i))
+  {
+    return true;
+  }
+  if(str[i] != str[(str.length()-1-i)])
+  {
+    return false;
+  }
+  
+  return is_palindrome_string(str,i+1);
+
+}
+
+
+void reverse_string2(char a[],int i)
+{
+  // base case 
+  
+  if(i>= (strlen(a) - i -1))
+  {
+    return;
+  }
+  char t = a[i];
+  a[i]= a[(strlen(a) - i -1)];
+  a[(strlen(a) - i -1)] = t;
+
+  reverse_string2(a,i+1);
+
+}
+
+
+void reverse_string(char a[],int i,int j)
+{
+  // base case 
+  
+  if(i>=j)
+  {
+    return;
+  }
+  char t = a[i];
+  a[i]= a[j];
+  a[j] = t;
+
+  reverse_string(a,i+1,j-1);
+
+}
+
+
 int arr_sum(int a[],int size)
 {
   // base case
@@ -13,6 +66,8 @@ int arr_sum(int a[],int size)
   return a[size - 1] + arr_sum(a,size - 1);
 
 }
+
+
 bool is_sorted(int a[],int size)
 {
   // base case 
@@ -30,6 +85,7 @@ bool is_sorted(int a[],int size)
   return is_sorted(a,size-1);
 }
 
+
 void say_digits(int n)
 {
   // base case
@@ -40,6 +96,7 @@ void say_digits(int n)
   say_digits(n/10);
   cout<<n%10<<" -> ";
 }
+
 
 int no_of_steps(int n) // climb stairs
 {
@@ -53,6 +110,7 @@ int no_of_steps(int n) // climb stairs
   return ans;
   
 }
+
 
 void fib(int n , int t1 = 0,int t2 = 1)
 {
@@ -74,6 +132,7 @@ void fib(int n , int t1 = 0,int t2 = 1)
 
 }
 
+
 int fib2(int n)
 {
   if(n ==0)
@@ -87,13 +146,11 @@ int fib2(int n)
    
 }
 
+
 int main ()
 {
-  int arr[5] = {1,2,3,4,5};
- 
-  int sum = arr_sum(arr,5);
+
   
-  cout<<" sum = "<<sum<<endl;
 
   return 0;
 
